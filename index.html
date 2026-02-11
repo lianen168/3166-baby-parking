@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3166.baby - 사랑해요 (I Love You)</title>
+    <!-- Google Fonts for Korean Support -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #FF6B81;
+            --soft-pink: #FFF0F5;
+            --deep-purple: #6D214F;
+            --text-main: #2C3A47;
+            --white: #ffffff;
+            --accent-gold: #EAB543;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--soft-pink);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            padding: 5rem 1rem 3rem;
+            position: relative;
+            background: linear-gradient(180deg, #ffffff 0%, var(--soft-pink) 100%);
+        }
+
+        .domain-wrapper {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            cursor: default;
+        }
+
+        /* Effect 1: 3166 - Neon Pulse & Glitch (Passionate Love) */
+        .num-part {
+            display: inline-block;
+            color: var(--primary-pink);
+            text-shadow: 2px 2px 0px var(--deep-purple);
+            animation: neonPulse 2s infinite alternate;
+        }
+
+        /* Effect 2: .baby - Soft Bounce (Innocence) */
+        .tld-part {
+            display: inline-block;
+            font-family: 'Gaegu', cursive; /* Handwritten style */
+            color: #70a1ff;
+            animation: babyBounce 2.5s infinite ease-in-out;
+        }
+
+        @keyframes neonPulse {
+            0% { text-shadow: 0 0 10px rgba(255, 107, 129, 0.2); transform: scale(1); }
+            100% { text-shadow: 0 0 30px rgba(255, 107, 129, 0.8), 0 0 60px rgba(255, 107, 129, 0.4); transform: scale(1.02); }
+        }
+
+        @keyframes babyBounce {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--deep-purple);
+            font-weight: 700;
+            margin-top: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .meaning {
+            font-size: 1.1rem;
+            color: #777;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* --- Canvas Visualization --- */
+        .visual-area {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background: radial-gradient(circle at 50% 50%, #fff 0%, #ffeaa7 100%);
+            overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .visual-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Gaegu', cursive;
+            font-size: 3rem;
+            color: rgba(255, 107, 129, 0.1);
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        canvas {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- 8 Fields Section --- */
+        .features-section {
+            padding: 4rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--deep-purple);
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(109, 33, 79, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-pink);
+            box-shadow: 0 20px 40px rgba(255, 107, 129, 0.15);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #636e72;
+            line-height: 1.6;
+            word-break: keep-all; /* Prevents breaking words in Korean */
+        }
+
+        /* --- CTA Section --- */
+        .cta-container {
+            text-align: center;
+            padding: 5rem 1rem;
+            background: linear-gradient(135deg, #fff0f3 0%, #fff 100%);
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--deep-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .currency {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #999;
+        }
+
+        .buy-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1.2rem 3.5rem;
+            background: linear-gradient(90deg, #FF6B81, #FF4757);
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 71, 87, 0.5);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #2f3542;
+            color: #dfe4ea;
+            text-align: center;
+            padding: 3rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .email-link {
+            color: #FF6B81;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #2C3A47;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="domain-wrapper">
+            <span class="num-part">3166</span><span class="tld-part">.baby</span>
+        </div>
+        <div class="subtitle">사랑해요 (I Love You)</div>
+        <div class="meaning">연인과 가족을 위한 영원한 디지털 약속</div>
+    </header>
+
+    <!-- Visual Area: Lovers Holding Hands Flow -->
+    <div class="visual-area">
+        <div class="visual-text">♥ Forever Love ♥</div>
+        <canvas id="flowCanvas"></canvas>
+    </div>
+
+    <section class="features-section">
+        <div class="section-header">
+            <h2>✨ 8가지 사랑의 영역 (8 Fields of Love)</h2>
+            <p>이 도메인이 가진 무한한 가치를 발견하세요</p>
+        </div>
+
+        <div class="grid">
+            <!-- 1. Digital Proposal -->
+            <div class="card">
+                <span class="icon">💍</span>
+                <h3>디지털 프러포즈<br><small>(Digital Proposal)</small></h3>
+                <p>3166(사랑해요)라는 숫자로 전하는 가장 현대적인 고백. 평생 잊지 못할 청혼 페이지를 만들어보세요.</p>
+            </div>
+            <!-- 2. Baby Growth Log -->
+            <div class="card">
+                <span class="icon">👶</span>
+                <h3>육아 성장 앨범<br><small>(Growth Album)</small></h3>
+                <p>.baby는 아이를 위한 최고의 선물입니다. 초음파 사진부터 첫걸음까지, 모든 순간을 클라우드에 영원히.</p>
+            </div>
+            <!-- 3. Couple's Blog -->
+            <div class="card">
+                <span class="icon">👩‍❤️‍👨</span>
+                <h3>커플 다이어리<br><small>(Couple's Blog)</small></h3>
+                <p>SNS는 사라질 수 있지만 도메인은 영원합니다. 우리 둘만의 비밀스러운 연애 기록장.</p>
+            </div>
+            <!-- 4. Family Asset -->
+            <div class="card">
+                <span class="icon">🏦</span>
+                <h3>가족 디지털 자산<br><small>(Family Asset)</small></h3>
+                <p>미래에는 좋은 도메인이 곧 부동산입니다. 우리 가족의 이름을 건 소중한 디지털 자산을 확보하세요.</p>
+            </div>
+            <!-- 5. Anniversary Gift -->
+            <div class="card">
+                <span class="icon">🎁</span>
+                <h3>기념일 선물<br><small>(Anniversary Gift)</small></h3>
+                <p>명품 가방보다 의미 있는 선물. 100주년이 지나도 변하지 않는 사랑의 징표를 선물하세요.</p>
+            </div>
+            <!-- 6. Metaverse ID -->
+            <div class="card">
+                <span class="icon">🌌</span>
+                <h3>메타버스 아이디<br><small>(Metaverse ID)</small></h3>
+                <p>3166.baby는 미래 가상 세계에서 우리 가족이 거주할 집의 문패가 될 것입니다.</p>
+            </div>
+            <!-- 7. Brand Story -->
+            <div class="card">
+                <span class="icon">📖</span>
+                <h3>브랜드 스토리<br><small>(Brand Story)</small></h3>
+                <p>유아용품, 가족 사진관, 웨딩 플래닝 등 사랑을 주제로 한 비즈니스를 위한 완벽한 브랜드명.</p>
+            </div>
+            <!-- 8. Emotional Connection -->
+            <div class="card">
+                <span class="icon">💞</span>
+                <h3>마음의 연결<br><small>(Heart Connection)</small></h3>
+                <p>멀리 떨어져 있어도 3166.baby에 접속하는 순간, 우리는 언제나 연결되어 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-container">
+        <div class="price">
+            $100 <span class="currency">USD</span>
+        </div>
+        <p style="color: #666; margin-top: 10px;">즉시 구매 가능 · 소유권 100% 이전</p>
+        
+        <!-- Spaceship Buy Link (Opens in new tab) -->
+        <a href="https://www.spaceship.com/s/buy/3166.baby/9UL4lk6GAoACXxa1" target="_blank" class="buy-button">
+            구매하기 (Buy Now)
+        </a>
+    </section>
+
+    <footer>
+        <p>문의하기 (Contact): <span class="email-link" onclick="copyToClipboard()">joshua369x@gmail.com</span></p>
+        <p>Copyright © 2026 3166.baby. All rights reserved.</p>
+    </footer>
+
+    <div id="toast" class="toast">이메일 주소가 복사되었습니다! (Email Copied)</div>
+
+    <script>
+        // --- Email Copy Feature ---
+        function copyToClipboard() {
+            const email = "joshua369x@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById("toast");
+                toast.className = "toast show";
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            }).catch(err => {
+                console.error('Copy failed', err);
+            });
+        }
+
+        // --- Canvas Animation: Lovers Holding Hands Flow ---
+        const canvas = document.getElementById('flowCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let w, h;
+        let particles = [];
+
+        function resize() {
+            w = canvas.width = canvas.parentElement.offsetWidth;
+            h = canvas.height = canvas.parentElement.offsetHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Particles represented by love-related symbols and the number
+        const symbols = ['3', '1', '6', '6', '♥', '사랑', 'LOVE'];
+
+        class Particle {
+            constructor(type) {
+                this.type = type; // 0 = left stream, 1 = right stream
+                this.reset();
+            }
+
+            reset() {
+                this.x = this.type === 0 ? Math.random() * w * 0.2 : w - (Math.random() * w * 0.2);
+                this.y = h + Math.random() * 100; // Start below screen
+                this.speed = 1 + Math.random() * 1.5;
+                this.text = symbols[Math.floor(Math.random() * symbols.length)];
+                this.size = 12 + Math.random() * 14;
+                // Pinkish/Red colors
+                this.color = `rgba(255, ${50 + Math.random() * 100}, ${100 + Math.random() * 100}, ${0.4 + Math.random() * 0.5})`;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = (Math.random() - 0.5) * 0.05;
+            }
+
+            update() {
+                this.y -= this.speed;
+                this.angle += this.spin;
+
+                // Visual Logic: Streams curve towards center (holding hands)
+                const centerX = w / 2;
+                const progress = (h - this.y) / h; // 0 at bottom, 1 at top
+
+                if (this.type === 0) {
+                    // Left stream moves right
+                    if (this.x < centerX - 20) {
+                        this.x += Math.sin(progress * Math.PI) * 1.5;
+                    }
+                } else {
+                    // Right stream moves left
+                    if (this.x > centerX + 20) {
+                        this.x -= Math.sin(progress * Math.PI) * 1.5;
+                    }
+                }
+
+                // Reset if goes off top
+                if (this.y < -50) this.reset();
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.font = `${this.size}px 'Noto Sans KR'`;
+                ctx.fillStyle = this.color;
+                ctx.fillText(this.text, 0, 0);
+                ctx.restore();
+            }
+        }
+
+        // Initialize Particles
+        for(let i=0; i<120; i++) {
+            particles.push(new Particle(i % 2));
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, w, h);
+            
+            // Draw a subtle glowing center point (where hands meet)
+            let grad = ctx.createRadialGradient(w/2, h/2, 10, w/2, h/2, 150);
+            grad.addColorStop(0, "rgba(255, 230, 230, 0.6)");
+            grad.addColorStop(1, "rgba(255, 255, 255, 0)");
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, w, h);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
